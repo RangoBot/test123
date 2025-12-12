@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Fella!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka One', cursive;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+
+    /* Bordeaux dark gradient background */
+    background: linear-gradient(270deg, #3e0d0d, #5a1a1a, #7b2b2b, #5a1a1a, #3e0d0d);
+    background-size: 1200% 1200%;
+    animation: darkBordeaux 20s ease infinite;
+  }
+
+  @keyframes darkBordeaux {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 50%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Title style */
+  h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 5em;
+    background: linear-gradient(90deg, #b03060, #ff5c8a, #ff8aa0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-align: center;
+    animation: floatText 2s ease-in-out infinite alternate, softGlow 3s ease-in-out infinite alternate;
+    margin: 0 20px;
+  }
+
+  @keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes softGlow {
+    0% { text-shadow: 0 0 5px #b03060, 0 0 10px #ff5c8a; }
+    50% { text-shadow: 0 0 10px #ff8aa0, 0 0 15px #b03060; }
+    100% { text-shadow: 0 0 5px #ff5c8a, 0 0 10px #ff8aa0; }
+  }
+
+  /* Cake styles */
+  .cake {
+    position: relative;
+    margin: 100px auto 30px auto; /* move cake slightly down */
+    width: 250px;
+    height: 220px;
+  }
+
+  .cake-layer {
+    height: 50px;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .layer1 { width: 250px; bottom: 0; background: linear-gradient(to bottom, #5a1a1a, #7b2b2b); }
+  .layer2 { width: 200px; bottom: 50px; background: linear-gradient(to bottom, #8b3a3a, #b04b4b); }
+  .layer3 { width: 150px; bottom: 100px; background: linear-gradient(to bottom, #b56576, #d07c8a); }
+  .layer4 { width: 100px; bottom: 150px; background: linear-gradient(to bottom, #d799a3, #e6aab0); }
+
+  /* Frosting */
+  .frosting {
+    width: 100%;
+    height: 20px;
+    background: #fff3e6; /* soft cream */
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Candle */
+  .candle {
+    width: 14px;
+    height: 50px;
+    background: #ffd700; /* gold */
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    animation: flicker 0.2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    from { transform: translateX(-50%) scaleY(1); }
+    to { transform: translateX(-50%) scaleY(1.2); }
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  /* Music button */
+  #playBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    background: #b03060;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+    position: relative;
+  }
+
+  #playBtn:hover {
+    background: #ff5c8a;
+  }
+
+  /* Paragraph text */
+  p {
+    font-size: 1.6em;
+    margin-top: 30px;
+    color: #fff8c4; /* light cream */
+    text-shadow: 1px 1px 5px #00000088;
+    animation: fadeIn 2s ease-in-out forwards;
+    max-width: 600px;
+    line-height: 1.5;
+    font-style: italic;
+    text-align: center;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Balloons */
+  .balloon {
+    position: absolute;
+    width: 40px;
+    height: 60px;
+    border-radius: 50%;
+    bottom: -80px;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+  }
+</style>
+</head>
+<body>
+<h1>Happy Birthday Fella!</h1>
+
+<div class="cake">
+  <div class="cake-layer layer1"><div class="frosting"></div></div>
+  <div class="cake-layer layer2"><div class="frosting"></div></div>
+  <div class="cake-layer layer3"><div class="frosting"></div></div>
+  <div class="cake-layer layer4"><div class="frosting"></div></div>
+  <div class="candle"></div>
+</div>
+
+<p>Eat cake, dance, and celebrate—you deserve the best day ever!<br>
+Wish you a long, happy, and healthy life!</p>
+
+<canvas id="confetti"></canvas>
+
+<button id="playBtn">Play Music</button>
+<audio id="bgMusic" loop>
+    <source src="Happy Birthday Fella.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Confetti
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confettiCount = 200;
+  const confetti = [];
+
+  function random(min, max){ return Math.random()*(max-min)+min; }
+
+  for(let i=0;i<confettiCount;i++){
+      confetti.push({
+          x: random(0,canvas.width),
+          y: random(0,canvas.height),
+          r: random(2,6),
+          d: random(1,5),
+          color:`hsl(${random(0,360)},100%,50%)`,
+          tilt: random(-10,10)
+      });
+  }
+
+  function drawConfetti(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      confetti.forEach(c=>{
+          ctx.beginPath();
+          ctx.lineWidth=c.r;
+          ctx.strokeStyle=c.color;
+          ctx.moveTo(c.x+c.tilt, c.y);
+          ctx.lineTo(c.x+c.tilt, c.y+c.r*2);
+          ctx.stroke();
+      });
+      updateConfetti();
+  }
+
+  function updateConfetti(){
+      confetti.forEach(c=>{
+          c.y+=c.d;
+          c.tilt+=Math.sin(c.d);
+          if(c.y>canvas.height){ c.y=-10; c.x=random(0,canvas.width); }
+      });
+  }
+
+  setInterval(drawConfetti,20);
+
+  window.addEventListener('resize',()=>{
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+  });
+
+  // Music
+  const btn = document.getElementById('playBtn');
+  const music = document.getElementById('bgMusic');
+
+  btn.addEventListener('click', ()=>{
+      if(music.paused){
+          music.play();
+          btn.textContent = "Pause Music";
+      } else {
+          music.pause();
+          btn.textContent = "Play Music";
+      }
+  });
+
+  // Balloons
+  const colors = ["#b03060","#ff5c8a","#ff8aa0","#d07c8a","#b56576","#7b2b2b"];
+  for(let i=0;i<10;i++){
+      const balloon = document.createElement("div");
+      balloon.classList.add("balloon");
+      balloon.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+      balloon.style.left = Math.random()*90 + "vw";
+      balloon.style.animationDuration = (5 + Math.random()*5) + "s";
+      balloon.style.animationDelay = Math.random()*5 + "s";
+      document.body.appendChild(balloon);
+  }
+</script>
+</body>
+</html>

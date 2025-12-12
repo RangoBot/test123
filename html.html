@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy 24th Birthday, Fella!</title>
+  <style>
+    /* ---------- Reset & base ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html,body { height: 100%; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: linear-gradient(180deg,#0f172a 0%, #071426 60%); color: #fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    .wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:32px; }
+
+    /* ---------- Card ---------- */
+    .card {
+      width: 980px; max-width:95vw; background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border-radius:18px; padding:28px; box-shadow: 0 10px 30px rgba(2,6,23,0.7); position:relative; overflow:hidden;
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    /* ---------- Header / Title ---------- */
+    .title {
+      text-align:center; margin-bottom:14px;
+      font-size:34px; letter-spacing:0.6px; font-weight:700;
+      text-transform: none;
+    }
+    .title .glow {
+      display:inline-block;
+      padding:6px 12px;
+      background: linear-gradient(90deg,#FFB86B,#FF6B6B,#9B5CFF);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      animation: hue 6s linear infinite;
+    }
+    @keyframes hue { 0%{filter:hue-rotate(0deg);} 100%{filter:hue-rotate(360deg);} }
+
+    /* ---------- Subtitle ---------- */
+    .subtitle { text-align:center; color:rgba(255,255,255,0.75); margin-bottom:24px; font-size:15px; }
+
+    /* ---------- Stage layout ---------- */
+    .stage { display:flex; gap:28px; align-items:center; justify-content:center; flex-wrap:wrap; }
+
+    /* ---------- Pastel Cake Redesign ---------- */
+    .pastel-cake {
+      width: 320px;
+      height: 300px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Cake tiers */
+    .pastel-tier {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+      overflow: visible;
+    }
+
+    .pastel-tier.t3 { width: 260px; height: 90px; bottom: 10px; background: linear-gradient(180deg,#ffe4ec,#ffd2e8); }
+    .pastel-tier.t2 { width: 200px; height: 68px; bottom: 85px; background: linear-gradient(180deg,#ffe8f5,#ffe0fb); }
+    .pastel-tier.t1 { width: 150px; height: 50px; bottom: 140px; background: linear-gradient(180deg,#fff0fa,#fff5fc); }
+
+    /* Frosting drips */
+    .pastel-frost { position: absolute; width: 100%; height: 18px; border-radius: 10px; background: #ffffff; opacity: .85; }
+    .pastel-frost.top { top: -12px; }
+    .pastel-frost.mid { top: -14px; }
+    .pastel-frost.bot { top: -16px; }
+    .pastel-frost::before, .pastel-frost::after {
+      content: "";
+      position: absolute;
+      width: 12px; height: 26px;
+      background: #fff;
+      border-radius: 10px;
+      bottom: -18px;
+      opacity: .92;
+    }
+    .pastel-frost::before { left: 24%; transform: rotate(-6deg); }
+    .pastel-frost::after { right: 26%; transform: rotate(5deg); }
+
+    /* Topper number */
+    .pastel-num {
+      position: absolute;
+      bottom: 200px;
+      font-size: 46px;
+      font-weight: 900;
+      background: linear-gradient(90deg,#ffabc8,#ffb9d2,#ffc6e0);
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 4px 10px rgba(255,150,200,0.4));
+      animation: pastelPop 0.9s ease both;
+    }
+    @keyframes pastelPop { from { transform: translateY(20px) scale(.7); opacity: 0; } to { transform: translateY(0) scale(1); opacity:1; } }
+
+    /* Cute Pastel Candles */
+    .pastel-candles { position: absolute; bottom: 188px; display: flex; gap: 16px; z-index: 12; }
+    .p-candle { width: 12px; height: 44px; border-radius: 6px; position: relative; animation: candleWiggle 3s ease-in-out infinite; }
+    .p-candle.c1 { background: linear-gradient(180deg,#c8e4ff,#b9d7ff); }
+    .p-candle.c2 { background: linear-gradient(180deg,#ffd4e8,#ffc0db); }
+    .p-candle.c3 { background: linear-gradient(180deg,#e6d6ff,#d9c5ff); }
+
+    /* Flame */
+    .p-flame {
+      width: 16px; height: 22px;
+      background: radial-gradient(circle at 40% 20%, #fff 0%, #fff7d6 35%, #ffb3c8 85%);
+      border-radius: 60% 60% 40% 40%;
+      position: absolute;
+      left: 50%;
+      top: -20px;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 4px 10px rgba(255,180,200,0.7));
+      animation: pastelFlicker 180ms infinite;
+    }
+    @keyframes pastelFlicker { 0%{ transform: translateX(-50%) scale(1); opacity:1;} 50%{ transform: translateX(-50%) scale(0.88); opacity:.92;} 100%{ transform: translateX(-50%) scale(1); opacity:1;} }
+    @keyframes candleWiggle { 0%{ transform: rotate(0deg); } 50%{ transform: rotate(2deg); } 100%{ transform: rotate(0deg); } }
+
+    /* ---------- Balloons ---------- */
+    .balloon {
+      position:absolute; bottom:-10%; width:72px; height:96px; border-radius:50% 50% 44% 44%; display:flex; align-items:center; justify-content:center;
+      box-shadow: 0 18px 40px rgba(2,6,23,0.6), inset 0 -6px 18px rgba(0,0,0,0.12);
+      transform-origin:center bottom;
+      opacity:0.98;
+    }
+    .balloon::after { content:""; position:absolute; width:2px; height:48px; background:rgba(255,255,255,0.06); bottom:-46px; left:50%; transform:translateX(-50%); }
+    .balloon .shine { position:absolute; width:40%; height:36%; border-radius:50%; top:12%; left:16%; background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.3)); opacity:0.85; transform:rotate(-18deg); }
+    .balloon.b1 { left:8%; background: linear-gradient(180deg,#ffb4c4,#ff6b9a); animation: float1 8s ease-in-out infinite; }
+    .balloon.b2 { left:22%; background: linear-gradient(180deg,#ffd6a5,#ffb86b); animation: float2 7.4s ease-in-out infinite; }
+    .balloon.b3 { left:72%; background: linear-gradient(180deg,#9b5cff,#6b8bff); animation: float3 9s ease-in-out infinite; }
+    .balloon.b4 { left:84%; background: linear-gradient(180deg,#7ef2c7,#3bd1a6); animation: float4 8.6s ease-in-out infinite; }
+    @keyframes float1 { 0%{ transform: translateY(0) rotate(-3deg)} 50%{ transform: translateY(-140px) rotate(5deg)} 100%{ transform: translateY(0) rotate(-3deg)} }
+    @keyframes float2 { 0%{ transform: translateY(0) rotate(2deg)} 50%{ transform: translateY(-120px) rotate(-4deg)} 100%{ transform: translateY(0) rotate(2deg)} }
+    @keyframes float3 { 0%{ transform: translateY(0) rotate(1deg)} 50%{ transform: translateY(-160px) rotate(-6deg)} 100%{ transform: translateY(0) rotate(1deg)} }
+    @keyframes float4 { 0%{ transform: translateY(0) rotate(-2deg)} 50%{ transform: translateY(-130px) rotate(6deg)} 100%{ transform: translateY(0) rotate(-2deg)} }
+
+    /* ---------- Controls ---------- */
+    .controls { display:flex; gap:8px; justify-content:center; margin-top:18px; flex-wrap:wrap; }
+    .btn {
+      background: rgba(255,255,255,0.06); color:#fff; border:1px solid rgba(255,255,255,0.06);
+      padding:10px 14px; border-radius:12px; cursor:pointer; font-weight:600; font-size:14px;
+      transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{ transform: translateY(-3px); box-shadow: 0 6px 30px rgba(0,0,0,0.45); }
+    .btn--accent { background: linear-gradient(90deg,#ff9f6b,#d66bff); border:none; color:#081026; }
+
+    /* ---------- Confetti canvas ---------- */
+    #confettiCanvas { position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9; }
+
+    /* ---------- Footer message ---------- */
+    .message { text-align:center; margin-top:16px; font-size:14px; color:rgba(255,255,255,0.82); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width:880px){ .stage{ flex-direction:column; } .pastel-cake{ transform:scale(.9); } .card{ padding:18px; } .title{ font-size:28px; } }
+    @media (max-width:420px){ .pastel-cake{ transform:scale(.78); } .pastel-candles{ bottom:170px; } .pastel-num { font-size:36px; } }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="main" aria-labelledby="title">
+      <canvas id="confettiCanvas"></canvas>
+
+      <h1 id="title" class="title">Happy <span class="glow">24th</span> Birthday, <span style="color:#ffd36b">Fella</span>!</h1>
+      <p class="subtitle">Today we celebrate you — twenty-four years of stories, laughter and growth.</p>
+
+      <div class="stage" aria-hidden="false">
+        <!-- balloons left -->
+        <div style="width:320px; position:relative; height:300px;">
+          <div class="balloon b1" aria-hidden="true"><div class="shine"></div></div>
+          <div class="balloon b2" aria-hidden="true"><div class="shine"></div></div>
+          <div class="balloon b3" aria-hidden="true"><div class="shine"></div></div>
+          <div class="balloon b4" aria-hidden="true"><div class="shine"></div></div>
+        </div>
+
+        <!-- cake center -->
+        <div class="pastel-cake" aria-hidden="true">
+          <div class="pastel-num">24</div>
+          <div class="pastel-tier t3"><div class="pastel-frost bot"></div></div>
+          <div class="pastel-tier t2"><div class="pastel-frost mid"></div></div>
+          <div class="pastel-tier t1"><div class="pastel-frost top"></div></div>
+          <div class="pastel-candles">
+            <div class="p-candle c1"><div class="p-flame"></div></div>
+            <div class="p-candle c2"><div class="p-flame"></div></div>
+            <div class="p-candle c3"><div class="p-flame"></div></div>
+          </div>
+        </div>
+
+        <!-- decorative panel right -->
+        <div style="width:320px; display:flex; align-items:center; justify-content:center; gap:8px; flex-direction:column;">
+          <div style="text-align:center; max-width:260px;">
+            <h3 style="margin-bottom:8px">Make a wish</h3>
+            <p style="color:rgba(255,255,255,0.78); font-size:14px;">Click the buttons below to toggle confetti, music, or animate the cake.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="controls" role="group" aria-label="controls">
+        <button id="btnConfetti" class="btn">Toggle Confetti</button>
+        <button id="btnMusic" class="btn">Play Music</button>
+        <button id="btnCake" class="btn btn--accent">Cake Pop</button>
+      </div>
+
+      <p class="message">Tip: Press <strong>Play Music</strong> to add atmosphere. Use <strong>Cake Pop</strong> to animate the cake.</p>
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop preload="auto"></audio>
+
+  <script>
+    /* ----------------- Confetti (simple) ----------------- */
+    (function(){
+      const canvas = document.getElementById('confettiCanvas');
+      const ctx = canvas.getContext('2d');
+      let W=0,H=0, particles=[], animId=null, running=false;
+
+      function resize(){ W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+      window.addEventListener('resize', resize); resize();
+      function rand(min,max){ return Math.random()*(max-min)+min; }
+      function createParticle(x,y){ return { x:x, y:y, vx:rand(-3,3), vy:rand(-6,-1), size:rand(6,14), rot:rand(0,360), vr:rand(-6,6), color:`hsl(${Math.floor(rand(0,360))} ${rand(60,90)}% ${rand(50,65)}%)`, life:rand(2000,4200), born:performance.now() } }
+      function emitBurst(n){ for(let i=0;i<n;i++) particles.push(createParticle(rand(0,W), rand(0,H/2))); }
+      function update(now){ ctx.clearRect(0,0,W,H); for(let i=particles.length-1;i>=0;i--){ const p=particles[i]; p.vy+=0.06; p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr*0.02; const age=now-p.born; if(age>p.life||p.y>H+40||p.x<-50||p.x>W+50) particles.splice(i,1); else { ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180); ctx.fillStyle=p.color; ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*0.6); ctx.restore(); } } if(running) animId=requestAnimationFrame(update); }
+      window.ConfettiControl={ start:function(){ if(running) return; running=true; emitBurst(120); animId=requestAnimationFrame(update); this._int=setInterval(()=>emitBurst(40),1600); }, stop:function(){ running=false; cancelAnimationFrame(animId); clearInterval(this._int); particles.length=0; ctx.clearRect(0,0,W,H); }, burst:function(){ emitBurst(160); } }
+    })();
+
+    /* ----------------- Buttons and interactivity ----------------- */
+    const btnConfetti = document.getElementById('btnConfetti');
+    const btnMusic = document.getElementById('btnMusic');
+    const btnCake = document.getElementById('btnCake');
+    const audio = document.getElementById('bgMusic');
+
+    let confOn = false;
+    btnConfetti.addEventListener('click', ()=>{ confOn=!confOn; if(confOn){window.ConfettiControl.start(); btnConfetti.textContent='Stop Confetti'; }else{window.ConfettiControl.stop(); btnConfetti.textContent='Toggle Confetti';} });
+
+    let musicOn = false;
+    btnMusic.addEventListener('click', async ()=>{ try{ if(!audio.src){ audio.src = "data:audio/mpeg;base64,//U..."; /* add your mp3 base64 or URL */ } if(!musicOn){ await audio.play(); btnMusic.textContent='Pause Music'; musicOn=true; } else { audio.pause(); btnMusic.textContent='Play Music'; musicOn=false; } }catch(e){console.log(e);} });
+
+    btnCake.addEventListener('click', ()=>{
+      const cake = document.querySelector('.pastel-cake');
+      cake.animate([{ transform:'translateY(0px)'},{ transform:'translateY(-20px)'},{ transform:'translateY(0px)'}], { duration:600, easing:'ease-out'});
+    });
+  </script>
+</body>
+</html>

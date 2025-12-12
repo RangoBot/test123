@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Fella!</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Fredoka One', cursive;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(270deg, #0d1b2a, #1b263b, #415a77, #1b263b, #0d1b2a);
+    background-size: 1200% 1200%;
+    animation: darkGradient 20s ease infinite;
+  }
+
+  @keyframes darkGradient {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 50% 50%; }
+    50% { background-position: 100% 50%; }
+    75% { background-position: 50% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  h1 {
+    font-size: 10vw;
+    max-font-size: 5em;
+    background: linear-gradient(90deg, #ff8a8a, #ffd1a6, #a3c8ff, #a8e0a3, #fff1a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    animation: floatText 2s ease-in-out infinite alternate, softGlow 3s ease-in-out infinite alternate;
+    margin: 10px 20px;
+  }
+
+  @keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+  }
+
+  @keyframes softGlow {
+    0% { text-shadow: 0 0 5px #ff8a8a, 0 0 10px #ffd1a6; }
+    50% { text-shadow: 0 0 10px #a3c8ff, 0 0 15px #a8e0a3; }
+    100% { text-shadow: 0 0 5px #fff1a3, 0 0 10px #ff8a8a; }
+  }
+
+  .cake {
+    position: relative;
+    margin: 50px auto 20px auto;
+    width: 80vw;
+    max-width: 250px;
+    height: 88vw;
+    max-height: 220px;
+  }
+
+  .cake-layer {
+    height: 20%;
+    border-radius: 20px 20px 0 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+
+  .layer1 { width: 100%; bottom: 0; background: linear-gradient(to bottom, #ff9ca1, #ff7c85); }
+  .layer2 { width: 80%; bottom: 20%; background: linear-gradient(to bottom, #ffe2b3, #ffc285); }
+  .layer3 { width: 60%; bottom: 40%; background: linear-gradient(to bottom, #a3c8ff, #7bb0ff); }
+  .layer4 { width: 40%; bottom: 60%; background: linear-gradient(to bottom, #c2e9c2, #8fdc8f); }
+
+  .frosting {
+    width: 100%;
+    height: 15%;
+    background: #fff;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .candle {
+    width: 5%;
+    height: 25%;
+    min-width: 14px;
+    min-height: 50px;
+    background: yellow;
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    animation: flicker 0.2s infinite alternate;
+  }
+
+  @keyframes flicker {
+    from { transform: translateX(-50%) scaleY(1); }
+    to { transform: translateX(-50%) scaleY(1.2); }
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  #playBtn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    background: #8b0000; /* Bordeaux */
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+    z-index: 10;
+    position: relative;
+  }
+
+  #playBtn:hover {
+    background: #a52a2a;
+  }
+
+  .balloon {
+    position: absolute;
+    width: 8vw;
+    height: 12vw;
+    max-width: 40px;
+    max-height: 60px;
+    border-radius: 50%;
+    bottom: -15vw;
+    animation: floatUp linear infinite;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+  }
+
+  p {
+    font-size: 4vw;
+    max-font-size: 1.6em;
+    margin-top: 30px;
+    color: #fff8c4;
+    text-shadow: 1px 1px 5px #00000088;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  @media (max-width: 500px) {
+    h1 { font-size: 12vw; letter-spacing: 0.1em; }
+    p { font-size: 5vw; line-height: 1.4; }
+  }
+</style>
+</head>
+<body>
+<h1>Happy Birthday Fella!</h1>
+
+<div class="cake">
+  <div class="cake-layer layer1"><div class="frosting"></div></div>
+  <div class="cake-layer layer2"><div class="frosting"></div></div>
+  <div class="cake-layer layer3"><div class="frosting"></div></div>
+  <div class="cake-layer layer4"><div class="frosting"></div></div>
+  <div class="candle"></div>
+</div>
+
+<p>Eat cake, dance, and celebrate—you deserve the best day ever!<br>
+Wish you a long, happy, and healthy life!</p>
+
+<canvas id="confetti"></canvas>
+
+<button id="playBtn">Play Music</button>
+<audio id="bgMusic" loop>
+  <source src="Happy Birthday Fella.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Confetti effect
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confettiCount = 150;
+  const confetti = [];
+  function random(min,max){ return Math.random()*(max-min)+min; }
+  for(let i=0;i<confettiCount;i++){
+    confetti.push({x:random(0,canvas.width), y:random(0,canvas.height), r:random(2,6), d:random(1,5), color:`hsl(${random(0,360)},100%,50%)`, tilt:random(-10,10)});
+  }
+  function drawConfetti(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    confetti.forEach(c=>{
+      ctx.beginPath();
+      ctx.lineWidth=c.r;
+      ctx.strokeStyle=c.color;
+      ctx.moveTo(c.x+c.tilt, c.y);
+      ctx.lineTo(c.x+c.tilt, c.y+c.r*2);
+      ctx.stroke();
+    });
+    updateConfetti();
+  }
+  function updateConfetti(){
+    confetti.forEach(c=>{
+      c.y+=c.d;
+      c.tilt+=Math.sin(c.d);
+      if(c.y>canvas.height){ c.y=-10; c.x=random(0,canvas.width); }
+    });
+  }
+  setInterval(drawConfetti,20);
+  window.addEventListener('resize',()=>{ canvas.width=window.innerWidth; canvas.height=window.innerHeight; });
+
+  // Music control
+  const btn = document.getElementById('playBtn');
+  const music = document.getElementById('bgMusic');
+  btn.addEventListener('click', ()=>{
+    if(music.paused){ music.play(); btn.textContent="Pause Music"; }
+    else{ music.pause(); btn.textContent="Play Music"; }
+  });
+
+  // Balloons
+  const colors = ["#8b0000","#ff4b69","#ffd6a5","#a3c8ff","#6fdc6f","#ffeb3b"];
+  for(let i=0;i<10;i++){
+    const balloon = document.createElement("div");
+    balloon.classList.add("balloon");
+    balloon.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
+    balloon.style.left = Math.random()*90 + "vw";
+    balloon.style.animationDuration = (5 + Math.random()*5) + "s";
+    balloon.style.animationDelay = Math.random()*5 + "s";
+    document.body.appendChild(balloon);
+  }
+</script>
+</body>
+</html>

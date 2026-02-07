@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Message</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #fbc2eb, #a6c1ee); /* soft romantic gradient */
+        overflow: hidden;
+    }
+
+    h1 {
+        font-family: 'Pacifico', cursive;
+        font-size: 52px;
+        color: #ff4d6d;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 6px #f0a1b8;
+    }
+
+    p {
+        font-size: 22px;
+        color: #333;
+        max-width: 550px;
+        margin: 0 auto 50px auto;
+        line-height: 1.8;
+        background: rgba(255,255,255,0.8);
+        padding: 25px;
+        border-radius: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        font-weight: 500;
+    }
+
+    #buttons {
+        margin-top: 20px;
+    }
+
+    button {
+        font-size: 20px;
+        padding: 14px 30px;
+        margin: 20px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #yes {
+        background-color: #ff6b81;
+        color: white;
+    }
+
+    #yes:hover {
+        transform: scale(1.1);
+        background-color: #ff4757;
+    }
+
+    #no {
+        background-color: #f1c40f;
+        color: #333;
+    }
+
+    #no:hover {
+        transform: scale(1.1);
+    }
+
+    #message {
+        display: none;
+        font-size: 36px;
+        color: #ff4d6d;
+        text-shadow: 2px 2px 8px #f0a1b8;
+        margin-top: 30px;
+        animation: pulse 1s infinite;
+        font-weight: 500;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+    }
+</style>
+</head>
+<body>
+
+<h1>Dear Ilhem 💖</h1>
+<p>
+    Every moment I spend with you feels magical and unforgettable.<br>
+    I can’t help but smile whenever I think of you.<br>
+    You make my days brighter and my heart lighter.<br>
+    I really like you, I fancy you, and I enjoy every second we’re together.<br>
+    So… what do you say we give us another chance and be together again?
+</p>
+
+<div id="buttons">
+    <button id="yes">Yes</button>
+    <button id="no">No</button>
+</div>
+
+<div id="message">🫥🤨 Think twice!</div>
+
+<script>
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+    const message = document.getElementById('message');
+    let dodgeCount = 0;
+    const maxDodges = 4; // dodge 4 times
+
+    noBtn.addEventListener('mouseenter', () => {
+        dodgeCount++;
+        if (dodgeCount < maxDodges) {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        } else {
+            noBtn.style.display = 'none';
+            message.style.display = 'block';
+        }
+    });
+
+    yesBtn.addEventListener('click', () => {
+        alert("Yay! I knew you'd say yes! 🥰");
+    });
+</script>
+
+</body>
+</html>
